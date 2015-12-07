@@ -1,0 +1,13 @@
+{
+  "name": "a8e",
+  "version": "0.0.1",
+  "description": "Create numeronyms",
+  "main": "index.js",
+  "keywords": [
+    "numeronym",
+    "abbreviate",
+    "shorten"
+  ],
+  "author": "Paulo Avila <pauloavila@gmail.com>",
+  "license": "ISC"
+}
