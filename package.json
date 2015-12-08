@@ -6,13 +6,22 @@
   "scripts": {
     "test": "mocha --reporter spec"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/demoive/a8e.git"
+  },
   "keywords": [
     "numeronym",
+    "numeronymize",
     "abbreviate",
     "shorten"
   ],
   "author": "Paulo Avila <pauloavila@gmail.com>",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/demoive/a8e/issues"
+  },
+  "homepage": "https://github.com/demoive/a8e#readme",
   "devDependencies": {
     "chai": "^3.4.1",
     "mocha": "^2.3.4"
