@@ -10,11 +10,13 @@ module.exports = function (text) {
 
   var string = '' + text;
   var length = string.length;
-  var tokens = string.match(re);
 
   if (length < 3) {
     return string;
   }
 
-  return tokens[1] + tokens[2].length + tokens[3];
+  string = string.toLowerCase();
+  var tokens = string.match(re);
+
+  return tokens[1] + tokens[2].replace(/\s+/g, '').length + tokens[3];
 };

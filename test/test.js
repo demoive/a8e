@@ -27,11 +27,23 @@ describe('a8e', function() {
   describe('#numeronymization', function () {
     var tests = [
       {input: 'localization',         output: 'l10n'},
-      {input: 'internationalization', output: 'i18n'}
+      {input: 'internationalization', output: 'i18n'},
+      {input: 'documentation',        output: 'd11n'},
+      {input: 'modularization',       output: 'm12n'},
+      {input: 'accessibility',        output: 'a11y'},
+      {input: 'canonicalization',     output: 'c14n'},
+      {input: 'normalization',        output: 'n11n'},
+      {input: 'virtualization',       output: 'v12n'},
+      {input: 'globalization',        output: 'g11n'},
+      {input: 'localizability',       output: 'l12y'},
+      {input: 'personalization',      output: 'p13n'},
+      {input: 'interoperability',     output: 'i14y'},
+      {input: 'Arabization',          output: 'a9n'},
+      {input: 'Andreessen Horowitz',  output: 'a16z'}
     ];
 
     tests.forEach(function (test) {
-      it('should work for <' + test.input + '>', function () {
+      it('should work for "' + test.input + '" => "' + test.output + '"', function () {
         var result = a8e(test.input);
         expect(result).to.equal(test.output);
       });
