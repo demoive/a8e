@@ -6,7 +6,7 @@
  * @return {string}
  */
 module.exports = function (text) {
-  var re = /(.{1})(.+)(.{1})/;
+  var re = /^\s*(.{1})(.+?)(.{1})\s*$/;
 
   var string = '' + text;
   var length = string.length;

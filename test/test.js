@@ -22,6 +22,16 @@ describe('a8e', function() {
       expect(a8e(input2)).to.equal(input2);
       expect(a8e(input3)).to.not.equal(input3);
     });
+
+    it('should trim leading/trailing whitespace', function () {
+      var result = a8e('  localization  ');
+      expect(result).to.equal('l10n');
+    });
+
+    it('should convert output to lowercase', function () {
+      var result = a8e('Localization');
+      expect(result).to.equal('l10n');
+    });
   });
 
   describe('#numeronymization', function () {
