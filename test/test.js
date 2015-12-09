@@ -5,22 +5,22 @@ var a8e = require('../index');
 
 describe('a8e', function() {
   describe('#edgeCases', function () {
-    it('should return a stringified version of input', function () {
+    it('should return `undefined` for non-strings', function () {
       var result = a8e(1);
-      expect(result).to.be.a('string');
-      expect(result).to.equal('1');
+      expect(result).to.equal(undefined);
     });
 
-    it('should return same input if length less than 3', function () {
+    it('should return `undefined` if length less than 3', function () {
       var input0 = '';
       var input1 = 'I';
       var input2 = 'yo';
       var input3 = 'foo';
 
-      expect(a8e(input0)).to.equal(input0);
-      expect(a8e(input1)).to.equal(input1);
-      expect(a8e(input2)).to.equal(input2);
-      expect(a8e(input3)).to.not.equal(input3);
+      expect(a8e(input0)).to.equal(undefined);
+      expect(a8e(input1)).to.equal(undefined);
+      expect(a8e(input2)).to.equal(undefined);
+      expect(a8e(input3)).to.not.equal(undefined);
+      expect(a8e(input3)).to.be.a('string');
     });
 
     it('should trim leading/trailing whitespace', function () {
@@ -28,34 +28,39 @@ describe('a8e', function() {
       expect(result).to.equal('l10n');
     });
 
+    it('should remove spaces', function () {
+      var result = a8e('Andreessen Horowitz');
+      expect(result).to.equal('a16z');
+    });
+
     it('should convert output to lowercase', function () {
-      var result = a8e('Localization');
-      expect(result).to.equal('l10n');
+      var result = a8e('DocumeNtatioN');
+      expect(result).to.equal('d11n');
     });
   });
 
   describe('#numeronymization', function () {
     var tests = [
-      {input: 'localization',         output: 'l10n'},
-      {input: 'internationalization', output: 'i18n'},
-      {input: 'documentation',        output: 'd11n'},
-      {input: 'modularization',       output: 'm12n'},
-      {input: 'accessibility',        output: 'a11y'},
-      {input: 'canonicalization',     output: 'c14n'},
-      {input: 'normalization',        output: 'n11n'},
-      {input: 'virtualization',       output: 'v12n'},
-      {input: 'globalization',        output: 'g11n'},
-      {input: 'localizability',       output: 'l12y'},
-      {input: 'personalization',      output: 'p13n'},
-      {input: 'interoperability',     output: 'i14y'},
-      {input: 'Arabization',          output: 'a9n'},
-      {input: 'Andreessen Horowitz',  output: 'a16z'}
+      {input: 'localization',         expect: 'l10n'},
+      {input: 'internationalization', expect: 'i18n'},
+      {input: 'documentation',        expect: 'd11n'},
+      {input: 'modularization',       expect: 'm12n'},
+      {input: 'accessibility',        expect: 'a11y'},
+      {input: 'canonicalization',     expect: 'c14n'},
+      {input: 'normalization',        expect: 'n11n'},
+      {input: 'virtualization',       expect: 'v12n'},
+      {input: 'globalization',        expect: 'g11n'},
+      {input: 'localizability',       expect: 'l12y'},
+      {input: 'personalization',      expect: 'p13n'},
+      {input: 'interoperability',     expect: 'i14y'},
+      {input: 'arabization',          expect: 'a9n'},
+      {input: 'Andreessen Horowitz',  expect: 'a16z'}
     ];
 
     tests.forEach(function (test) {
-      it('should work for "' + test.input + '" => "' + test.output + '"', function () {
+      it('should work for "' + test.input + '" => "' + test.expect + '"', function () {
         var result = a8e(test.input);
-        expect(result).to.equal(test.output);
+        expect(result).to.equal(test.expect);
       });
     });
   });

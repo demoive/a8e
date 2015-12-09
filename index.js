@@ -3,20 +3,24 @@
 /**
  * Converts the input to a numeronym
  * @param {string} text
- * @return {string}
+ * @returns {string|undefined} Numeronymization of text
  */
 module.exports = function (text) {
-  var re = /^\s*(.{1})(.+?)(.{1})\s*$/;
+  var PATTERN = /^(.)(.+?)(.)$/;
 
-  var string = '' + text;
-  var length = string.length;
+  var string = ('' + text)
+    .toLowerCase()
+    .replace(/\s+/g, '');
 
-  if (length < 3) {
-    return string;
+  var tokens = string.match(PATTERN);
+
+  if (!tokens) {
+    return;
   }
 
-  string = string.toLowerCase();
-  var tokens = string.match(re);
-
-  return tokens[1] + tokens[2].replace(/\s+/g, '').length + tokens[3];
+  return (
+    tokens[1] +
+    tokens[2].length +
+    tokens[3]
+  );
 };
