@@ -37,6 +37,11 @@ describe('a8e', function() {
       var result = a8e('DocumeNtatioN');
       expect(result).to.equal('d11n');
     });
+
+    // it('should only use first line in multiline inputs', function () {
+    //   var result = a8e('accessibility\ncanonicalization');
+    //   expect(result).to.equal('a11y');
+    // });
   });
 
   describe('#numeronymization', function () {
