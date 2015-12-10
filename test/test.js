@@ -47,6 +47,7 @@ describe('a8e', function() {
   describe('#numeronymization', function () {
     var tests = [
       {input: 'localization',         expect: 'l10n'},
+      {input: 'multilingualization',  expect: 'm17n'},
       {input: 'internationalization', expect: 'i18n'},
       {input: 'documentation',        expect: 'd11n'},
       {input: 'modularization',       expect: 'm12n'},
@@ -59,7 +60,8 @@ describe('a8e', function() {
       {input: 'personalization',      expect: 'p13n'},
       {input: 'interoperability',     expect: 'i14y'},
       {input: 'arabization',          expect: 'a9n'},
-      {input: 'Andreessen Horowitz',  expect: 'a16z'}
+      {input: 'Andreessen Horowitz',  expect: 'a16z'},
+      {input: 'Scherpenhuizen',       expect: 's12n'}
     ];
 
     tests.forEach(function (test) {
